@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"> <!-- 이 페이지가 thymeleaf기능을 쓸 수 있게 함-->
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'안녕하세요. ' + ${data}" >안녕하세요. 손님</p>
+<!-- th : thymeleaf의 약자--
+${data}가 HelloController의 attribute value인 "Hello!"로 치환됨>
+</body>
+</html>
