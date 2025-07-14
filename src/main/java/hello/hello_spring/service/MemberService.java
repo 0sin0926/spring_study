@@ -2,14 +2,19 @@ package hello.hello_spring.service;
 
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
-import hello.hello_spring.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
 
+    private final MemberRepository memberRepository;
+
+    // 다른 데서 (test) 또 새로운 repository 객체를 만들게 하는 게 아니라, 이 함수에다가 넣게해서 초기화
+    public MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
     /**
      * 회원 가입
      */
