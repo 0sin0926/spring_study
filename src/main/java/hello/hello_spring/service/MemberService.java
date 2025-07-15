@@ -2,15 +2,19 @@ package hello.hello_spring.service;
 
 import hello.hello_spring.domain.Member;
 import hello.hello_spring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service // 이 annotation이 있어야 스프링이 밑의 클래스 코드들을 서비스라고 인지함
 public class MemberService {
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     // 다른 데서 (test) 또 새로운 repository 객체를 만들게 하는 게 아니라, 이 함수에다가 넣게해서 초기화
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
