@@ -1,11 +1,10 @@
 package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+//@Repository
 // 마찬가지로, MemberRepository를 상속받을거니까 이거 클릭하고 option+enter하면 method들을 자동 추가할 수 있음
 public class MemoryMemberRepository implements MemberRepository {
 
