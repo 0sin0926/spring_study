@@ -1,8 +1,11 @@
 package hello.hello_spring.controller;
 
+import hello.hello_spring.domain.Member;
 import hello.hello_spring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 /** private final MemberService memberService = new MemberService();
@@ -22,6 +25,23 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    @GetMapping("/members/new") // get 방식 : 웹 주소창에 /memberds/new라고 치면 밑의 함수기능을 수행
+    public String createForm(){
+        return "members/createMemberForm"; // 리턴하는 이름을 가진 파일을 templates에서 찾아서 실행
+    }
+
+    /* <form action="/members/new" method="post"> 이런식으로
+        method를 post방식으로 설정한다면,
+     */
+    @PostMapping("/members/new")
+    public String create(MemberForm form){
+        Member member = new Member();
+        member.setName(form.getName());
+
+        memberService.join(member);
+
+        return "redirect:/";
+    }
 
 
 
